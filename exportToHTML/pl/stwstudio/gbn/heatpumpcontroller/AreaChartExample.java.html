@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>AreaChartExample.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AreaChartExample.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pl.stwstudio.gbn.heatpumpcontroller</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.ApexChartsBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.builder.*</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.chart.Type</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.chart.builder.ZoomBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.legend.HorizontalAlign</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.stroke.Curve</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.xaxis.XAxisType</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.helper.Series</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.subtitle.Align</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.time.LocalDate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.stream.IntStream</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">AreaChartExample </span><span class="s0">extends </span><span class="s1">ApexChartsBuilder {</span>
+
+    <span class="s0">public </span><span class="s1">AreaChartExample() {</span>
+        <span class="s1">withChart(</span>
+                <span class="s1">ChartBuilder.get()</span>
+                        <span class="s1">.withType(Type.AREA)</span>
+                        <span class="s1">.withZoom(ZoomBuilder.get()</span>
+                                <span class="s1">.withEnabled(</span><span class="s0">false</span><span class="s1">)</span>
+                                <span class="s1">.build())</span>
+                        <span class="s1">.build())</span>
+                <span class="s1">.withDataLabels(DataLabelsBuilder.get()</span>
+                        <span class="s1">.withEnabled(</span><span class="s0">false</span><span class="s1">)</span>
+                        <span class="s1">.build())</span>
+                <span class="s1">.withStroke(StrokeBuilder.get().withCurve(Curve.STRAIGHT).build())</span>
+                <span class="s1">.withSeries(</span><span class="s0">new </span><span class="s1">Series&lt;&gt;(</span><span class="s2">&quot;STOCK ABC&quot;</span><span class="s0">, </span><span class="s3">10.0</span><span class="s0">, </span><span class="s3">41.0</span><span class="s0">, </span><span class="s3">35.0</span><span class="s0">, </span><span class="s3">51.0</span><span class="s0">, </span><span class="s3">49.0</span><span class="s0">, </span><span class="s3">62.0</span><span class="s0">, </span><span class="s3">69.0</span><span class="s0">, </span><span class="s3">91.0</span><span class="s0">, </span><span class="s3">148.0</span><span class="s1">))</span>
+                <span class="s1">.withSubtitle(TitleSubtitleBuilder.get()</span>
+                        <span class="s1">.withText(</span><span class="s2">&quot;Price Movements&quot;</span><span class="s1">)</span>
+                        <span class="s1">.withAlign(Align.LEFT).build())</span>
+                <span class="s1">.withLabels(IntStream.range(</span><span class="s3">1</span><span class="s0">, </span><span class="s3">10</span><span class="s1">).boxed().map(day -&gt; LocalDate.of(</span><span class="s3">2000</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s1">day).toString()).toArray(String[]::</span><span class="s0">new</span><span class="s1">))</span>
+                <span class="s1">.withXaxis(XAxisBuilder.get()</span>
+                        <span class="s1">.withType(XAxisType.DATETIME).build())</span>
+                <span class="s1">.withYaxis(YAxisBuilder.get()</span>
+                        <span class="s1">.withOpposite(</span><span class="s0">true</span><span class="s1">).build())</span>
+                <span class="s1">.withLegend(LegendBuilder.get().withHorizontalAlign(HorizontalAlign.LEFT).build())</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

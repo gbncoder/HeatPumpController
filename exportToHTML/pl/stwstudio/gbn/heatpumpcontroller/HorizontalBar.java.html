@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>HorizontalBar.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+HorizontalBar.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pl.stwstudio.gbn.heatpumpcontroller</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.ApexChartsBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.builder.ChartBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.builder.DataLabelsBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.builder.PlotOptionsBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.builder.XAxisBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.chart.Type</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.plotoptions.builder.BarBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.helper.Series</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">HorizontalBar </span><span class="s0">extends </span><span class="s1">ApexChartsBuilder {</span>
+    <span class="s0">public </span><span class="s1">HorizontalBar () {</span>
+    <span class="s1">withChart(ChartBuilder.get()</span>
+                <span class="s1">.withType(Type.BAR)</span>
+                <span class="s1">.build())</span>
+            <span class="s1">.withPlotOptions(PlotOptionsBuilder.get()</span>
+                        <span class="s1">.withBar(BarBuilder.get()</span>
+                                <span class="s1">.withHorizontal(</span><span class="s0">true</span><span class="s1">)</span>
+                                <span class="s1">.build())</span>
+            <span class="s1">.build())</span>
+            <span class="s1">.withDataLabels(DataLabelsBuilder.get()</span>
+                        <span class="s1">.withEnabled(</span><span class="s0">false</span><span class="s1">)</span>
+                        <span class="s1">.build())</span>
+            <span class="s1">.withSeries(</span><span class="s0">new </span><span class="s1">Series&lt;&gt;(</span><span class="s2">400.0</span><span class="s0">, </span><span class="s2">430.0</span><span class="s0">, </span><span class="s2">448.0</span><span class="s0">, </span><span class="s2">470.0</span><span class="s0">, </span><span class="s2">540.0</span><span class="s0">, </span><span class="s2">580.0</span><span class="s0">, </span><span class="s2">690.0</span><span class="s0">, </span><span class="s2">1100.0</span><span class="s0">, </span><span class="s2">1200.0</span><span class="s0">, </span><span class="s2">1380.0</span><span class="s1">))</span>
+            <span class="s1">.withXaxis(XAxisBuilder.get()</span>
+                        <span class="s1">.withCategories()</span>
+                        <span class="s1">.build())</span><span class="s0">;</span>
+<span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

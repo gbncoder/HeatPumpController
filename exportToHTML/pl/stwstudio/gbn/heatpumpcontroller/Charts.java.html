@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Charts.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Charts.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pl.stwstudio.gbn.heatpumpcontroller</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.ApexChartsBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.builder.*</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.chart.Type</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.chart.builder.ZoomBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.grid.builder.RowBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.stroke.Curve</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.config.xaxis.TickPlacement</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.github.appreciated.apexcharts.helper.Series</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Charts </span><span class="s0">extends </span><span class="s1">ApexChartsBuilder {</span>
+    <span class="s0">public </span><span class="s1">Charts() {</span>
+        <span class="s1">withChart(ChartBuilder.get()</span>
+                <span class="s1">.withType(Type.LINE)</span>
+                <span class="s1">.withZoom(ZoomBuilder.get()</span>
+                        <span class="s1">.withEnabled(</span><span class="s0">false</span><span class="s1">)</span>
+                        <span class="s1">.build())</span>
+                <span class="s1">.build())</span>
+                <span class="s1">.withStroke(StrokeBuilder.get()</span>
+                        <span class="s1">.withCurve(Curve.SMOOTH)</span>
+                        <span class="s1">.build())</span>
+                <span class="s1">.withGrid(GridBuilder.get()</span>
+                        <span class="s1">.withRow(RowBuilder.get()</span>
+                                <span class="s1">.withColors(</span><span class="s2">&quot;#f3f3f3&quot;</span><span class="s0">, </span><span class="s2">&quot;transparent&quot;</span><span class="s1">)</span>
+                                <span class="s1">.withOpacity(</span><span class="s3">0.5</span><span class="s1">).build()</span>
+                        <span class="s1">).build())</span>
+                <span class="s1">.withForecastDataPoints(ForecastDataPointsBuilder.get().withCount(</span><span class="s3">2</span><span class="s1">).build())</span>
+                <span class="s1">.withXaxis(XAxisBuilder.get()</span>
+                        <span class="s1">.withCategories(</span><span class="s2">&quot;Jan&quot;</span><span class="s0">, </span><span class="s2">&quot;Feb&quot;</span><span class="s0">, </span><span class="s2">&quot;Mar&quot;</span><span class="s0">, </span><span class="s2">&quot;Apr&quot;</span><span class="s0">, </span><span class="s2">&quot;May&quot;</span><span class="s0">, </span><span class="s2">&quot;Jun&quot;</span><span class="s0">, </span><span class="s2">&quot;Jul&quot;</span><span class="s0">, </span><span class="s2">&quot;Aug&quot;</span><span class="s0">, </span><span class="s2">&quot;Sep&quot;</span><span class="s1">)</span>
+                        <span class="s1">.withTickPlacement(TickPlacement.BETWEEN)</span>
+                        <span class="s1">.build())</span>
+                <span class="s1">.withSeries(</span><span class="s0">new </span><span class="s1">Series&lt;&gt;(</span><span class="s2">&quot;Temp. &quot;</span><span class="s0">, </span><span class="s3">10.0</span><span class="s0">, </span><span class="s3">41.0</span><span class="s0">, </span><span class="s3">35.0</span><span class="s0">, </span><span class="s3">51.0</span><span class="s0">, </span><span class="s3">49.0</span><span class="s0">, </span><span class="s3">62.0</span><span class="s0">, </span><span class="s3">69.0</span><span class="s0">, </span><span class="s3">91.0</span><span class="s0">, </span><span class="s3">148.0</span><span class="s1">))</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

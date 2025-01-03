@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>MeasurementDAO.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MeasurementDAO.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pl.stwstudio.gbn.heatpumpcontroller</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">org.springframework.beans.factory.annotation.Autowired</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.jdbc.core.JdbcTemplate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.stereotype.Repository</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.time.LocalDate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Map</span><span class="s0">;</span>
+
+
+<span class="s1">@Repository</span>
+<span class="s0">public class </span><span class="s1">MeasurementDAO {</span>
+    <span class="s0">private </span><span class="s1">JdbcTemplate jdbcTemplate</span><span class="s0">;</span>
+
+    <span class="s1">@Autowired</span>
+    <span class="s0">public </span><span class="s1">MeasurementDAO(JdbcTemplate jdbcTemplate){</span>
+        <span class="s0">this</span><span class="s1">.jdbcTemplate = jdbcTemplate</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">add (Measurement measurement){</span>
+        <span class="s1">String sql = </span><span class="s2">&quot;INSERT INTO measurement VALUES(?,?,?,?,?,?,?)&quot;</span><span class="s0">;</span>
+        <span class="s1">jdbcTemplate.update(sql</span><span class="s0">,</span>
+                <span class="s1">measurement.getIdMeasurement()</span><span class="s0">,</span>
+                <span class="s1">measurement.getLocalDateTime()</span><span class="s0">,</span>
+                <span class="s1">measurement.getPower()</span><span class="s0">,</span>
+                <span class="s1">measurement.getTemp(</span><span class="s3">0</span><span class="s1">)</span><span class="s0">,</span>
+                <span class="s1">measurement.getTemp(</span><span class="s3">1</span><span class="s1">)</span><span class="s0">,</span>
+                <span class="s1">measurement.getTemp(</span><span class="s3">2</span><span class="s1">)</span><span class="s0">,</span>
+                <span class="s1">measurement.getTemp(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">List &lt;Map&lt;String</span><span class="s0">, </span><span class="s1">Object&gt;&gt; showLastMeasurement (LocalDate localDate){</span>
+        <span class="s1">String sql = </span><span class="s2">&quot;SELECT * FROM measurement WHERE DATE &gt;= ? ' 00:00:00' AND DATE &lt;= ? ' 23:59:59'&quot; </span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">jdbcTemplate.queryForList(sql</span><span class="s0">,new </span><span class="s1">Object [] {localDate.toString()</span><span class="s0">,</span><span class="s1">localDate.toString()})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

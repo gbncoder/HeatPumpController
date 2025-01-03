@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Config.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Config.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pl.stwstudio.gbn.heatpumpcontroller</span><span class="s0">;</span>
+
+
+<span class="s0">import </span><span class="s1">org.springframework.beans.factory.annotation.Value</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.boot.ApplicationArguments</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.boot.context.event.ApplicationReadyEvent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.boot.jdbc.DataSourceBuilder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.context.annotation.Bean</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.context.annotation.Configuration</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.context.event.EventListener</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.springframework.jdbc.core.JdbcTemplate</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">javax.sql.DataSource</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">javax.validation.Valid</span><span class="s0">;</span>
+
+<span class="s1">@Configuration</span>
+<span class="s0">public class </span><span class="s1">Config {</span>
+
+    <span class="s1">@Value(</span><span class="s2">&quot;${password}&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String password</span><span class="s0">;</span>
+
+    <span class="s1">@Bean</span>
+    <span class="s0">public </span><span class="s1">DataSource getDataSource(){</span>
+        <span class="s1">DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create()</span><span class="s0">;</span>
+        <span class="s1">dataSourceBuilder.url(</span><span class="s2">&quot;jdbc:mysql://127.0.0.1:3306/heatpump_database&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">dataSourceBuilder.username(</span><span class="s2">&quot;root&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">dataSourceBuilder.password(password)</span><span class="s0">;</span>
+        <span class="s1">dataSourceBuilder.driverClassName(</span><span class="s2">&quot;com.mysql.cj.jdbc.Driver&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">dataSourceBuilder.build()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Bean </span>
+    <span class="s0">public </span><span class="s1">JdbcTemplate getJdbcTemplate (){</span>
+
+        <span class="s0">return new </span><span class="s1">JdbcTemplate(getDataSource())</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+   <span class="s3">/* @EventListener (ApplicationReadyEvent.class) 
+    public void dbInit (){ 
+       String sql = &quot;CREATE TABLE Measurement (measure_id BIGINT, date DATETIME, power DOUBLE, temp1 FLOAT(4), temp2 FLOAT(4),temp3 FLOAT(4),temp4 FLOAT(4));&quot;; 
+       getJdbcTemplate().update(sql); 
+    } */</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
